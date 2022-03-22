@@ -1,11 +1,15 @@
 <script lang="ts">
   import Todo from "./Todo.svelte";
-  import { nanoid as uuid } from "nanoid";
+  import { nanoid } from "nanoid";
   import { getTodos, getSettings } from "./App.svelte";
   const settings = getSettings();
   const todos = getTodos();
   const add = (input) => {
-    todos.insert(0, { id: uuid(), completed: false, description: input.value });
+    todos.push({
+      id: nanoid(),
+      completed: false,
+      description: input.value,
+    });
     input.value = "";
   };
 </script>

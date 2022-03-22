@@ -13,22 +13,17 @@
 </script>
 
 <script>
-  import { nanoid } from "nanoid";
-
   import { Router, onUpgrade } from "vibemenu";
 
-  const todos = getTodos();
-  const settings = getSettings();
+  const state2 = getState();
 
   function setInitialValue() {
-    const firstTodo = {
-      id: nanoid(),
-      completed: false,
-      description: "First todo!",
+    $state2 = {
+      todos: [],
+      settings: {
+        placeholderText: "Press Enter to create todo!",
+      },
     };
-
-    todos.push(firstTodo);
-    $settings.placeholderText = "Press Enter to create todo!";
   }
 
   onUpgrade((version) => {
@@ -64,16 +59,6 @@
   @tailwind components;
   @tailwind utilities;
 
-  /*Install default font used in vibemenu*/
-  /*
-  @font-face {
-    font-family: "Varela Round script=latin rev=1";
-    font-style: normal;
-    font-weight: 400;
-    font-display: block;
-    src: url(https://vibe.menu/_app/assets/VarelaRound-Regular-d82847cb.ttf)
-      format("woff2");
-  }*/
   /*Hide scrollbar in body*/
   body {
     @apply scrollbar-hide;
